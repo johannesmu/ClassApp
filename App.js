@@ -1,14 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import {ClickMeBro} from './components/ClickMe';
+import {TextBox} from './components/TextBox';
 
-export default function App() {
+export default function Game() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>OK, bitches!</Text>
       <StatusBar style="auto" />
-      <ClickMeBro text="Hello" />
+      <TextBox text="Hello" colour="red" size={24} />
     </View>
   );
 }
