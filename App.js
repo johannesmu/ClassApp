@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 // custom component
 import { TextBox } from './components/TextBox';
+import { ClickCounter } from './components/ClickCounter';
 
 export default function App() {
   return (
@@ -12,6 +13,8 @@ export default function App() {
       <StatusBar style="auto" />
       <TextBox color="green" size={24} text="Custom Component" />
       <TextBox color="purple" size={18} text="Custom Text 2" />
+      <ClickCounter/>
+      <ClickCounter/>
     </View>
   );
 }
