@@ -13,6 +13,7 @@ export default function App() {
       <StatusBar style="auto" />
       <TextBox color="green" size={24} text="Custom Component" />
       <TextBox color="purple" size={18} text="Custom Text 2" />
+      {/* click counter component */}
       <ClickCounter/>
       <ClickCounter/>
     </View>
