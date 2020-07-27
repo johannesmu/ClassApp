@@ -1,49 +1,65 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-// custom component
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+
 import { TextBox } from './components/TextBox';
 import { ClickCounter } from './components/ClickCounter';
 
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <Text style={styles.greeting}>Hello World!</Text>
-//       <Button title="Click me" color="blue"/>
-//       <StatusBar style="auto" />
-//       <TextBox color="green" size={24} text="Custom Component" />
-//       <TextBox color="purple" size={18} text="Custom Text 2" />
-//       {/* click counter component */}
-//       <ClickCounter/>
-//       <ClickCounter/>
-//     </View>
-//   );
-// }
-
 export default class App extends Component {
+  
   constructor() {
     super()
     this.state = {
-      secret: 0
+      secret: 0,
+      guess: 0,
+      feedback: ''
     }
   }
-  render() {
+  setSecret() {
+    let random = Math.round( Math.random()*100 )
+    this.setState( { secret: random } )
+  }
+  componentDidMount() {
+    this.setSecret()
+  }
+  render () {
     return (
-      <View>
-        <Text>Guessing Game</Text>
+      <View style={styles.container}>
+        <TextBox color="blue" size={24} text="Guess my number!" />
+        <TextInput style={styles.input} onChangeText={this.updateGuess} />
+        <Button title="check guess" />
+        <Text>{this.state.feedback}</Text>
       </View>
     )
+  }
+  // updateGuess( userInput ) {
+  //   this.setState( {guess: userInput} )
+  // }
+  updateGuess = ( userInput ) => {
+    this.setState( {guess: userInput} )
+  }
+  checkGuess = () => {
+    const userGuess = parseInt( this.state.guess )
+    if( this.state.guess == this.state.secret ) {
+      this.setState({ feedback: "You guessed right!"})
+    }
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'lightblue',
     alignItems: 'center',
     justifyContent: 'center',
   },
   greeting: {
     color: 'red',
     fontSize: 36
+  },
+  input: {
+    minWidth: 200,
+    padding: 10,
+    textAlign: 'center',
+    backgroundColor: 'white'
   }
 });
