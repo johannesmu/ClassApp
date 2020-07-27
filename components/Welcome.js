@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import {Text,  View, StyleSheet, Image, TouchableOpacity, Button } from 'react-native'
 
 export const Welcome = (props) => {
-  const [multiplication, setMultiplication] = useState(15)
+  const [multiplication, setMultiplication] = useState(25)
   const [level, setLevel] = useState('slow')
-  const isPlaying = props.playing
-  if(isPlaying) {
+  let isPlaying = props.playing
+  let handler = props.handler
+  if(props.playing == false) {
     return (
       <View style={styles.welcomeView}>     
           <Text style={styles.title}>{props.text}</Text>
@@ -29,8 +30,10 @@ export const Welcome = (props) => {
             <Button title="fast" onPress={() => setLevel('fast')} />
             <Button title="lightning" onPress={() => setLevel('lightning')} />
           </View>
-          <TouchableOpacity style={styles.button}>
-    <Text style={styles.buttonText}>Play {multiplication} Multiplication {level}</Text>
+          <TouchableOpacity style={styles.button} onClick={handler} >
+            <Text style={styles.buttonText}>
+              Play {multiplication} Multiplication {level}
+            </Text>
           </TouchableOpacity>
       </View>
     )

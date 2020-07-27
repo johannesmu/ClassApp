@@ -9,22 +9,24 @@ export default class App extends Component {
     super()
     this.state = {
       time: 15,
-      playing: true,
+      playing: false,
       multiplier: 0
     }
-    this.initGame()
   }
-  initGame() {
-    this.state.multiplier = this.randomInt()
+  startGame() {
+    this.state.playing = true
+    console.log('bro')
   }
-  randomInt() {
-    let number = Math.random() * 10
-    return Math.round(number)
+  stopGame() {
+    this.state.playing = false;
   }
   render() {
     return (
       <View style={styles.container}>
-        <Welcome playing={this.state.playing} text="Multiplication Ninja" />
+        <Welcome 
+        playing={this.state.playing} 
+        text="Multiplication Ninja" 
+        handler={this.startGame.bind(this)} />
       </View>
     );
   }

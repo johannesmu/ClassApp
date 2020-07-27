@@ -9,10 +9,12 @@ export class Game extends Component {
     }
   }
   render() {
-    if( this.state.isPlaying ) {
-      <View>
-        <Text>The Game is playing</Text>
-      </View>
+    if( this.state.isPlaying ){
+      return(
+        <View>
+          <Text>The Game is playing</Text>
+        </View>
+      )
     }
   }
 }
