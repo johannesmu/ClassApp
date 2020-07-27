@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     minWidth: 300
   },
   text: {
-    color: '#ffffdd'
+    color: '#ffffdd',
+    textAlign: 'center'
   }
 })
